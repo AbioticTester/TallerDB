@@ -1,0 +1,45 @@
+<div class="container mt-3	">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="card">
+				<div class="card-body">
+					<table id="Usuarios" class="display" style="width:100%">
+						<thead>
+							<tr>
+								<th>id</th>
+								<th>Nombre de Usuario </th>
+								<th>Rol</th>
+							</tr>
+						</thead>
+						<tbody>
+							<repeat group="{{ @Usuarios }}" value="{{ @user }}">
+								<tr>
+									<td>{{@user.idUsuario }} </td>
+									<td>{{@user.nombreUsuario}} </td>
+									<td>
+										<check if="{{@user.rolUsuario}}==0">
+											<true>
+												Usuario
+											</true>
+											<false>
+												Administrador
+											</false>
+										</check>
+
+									</td>
+								</tr>
+							</repeat>
+						</tbody>
+						<tfoot>
+							<tr>
+								<th>id</th>
+								<th>Nombre de Usuario </th>
+								<th>Rol</th>
+							</tr>
+						</tfoot>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

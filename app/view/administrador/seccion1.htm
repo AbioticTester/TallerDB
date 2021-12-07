@@ -1,0 +1,63 @@
+<div class="mt-3 container">
+	<div class="row">
+		<div class="col-md-12 mb-3">
+			<button class="btn btn-success"  type="button" data-bs-toggle="offcanvas" data-bs-target="#addUser" aria-controls="offcanvasExample">
+				<i class="fas fa-user-plus"></i>
+			</button>
+		</div>
+		<div class="col-md-12">
+			<div class="card">
+				<div class="card-body table-responsive">
+					<table id="Usuarios" class="display" style="width:100%">
+						<thead>
+							<tr>
+								<th>id</th>
+								<th>Nombre de Usuario </th>
+								<th>Rol</th>
+								<th>Acciones</th>
+							</tr>
+						</thead>
+						<tbody>
+							<repeat group="{{ @Usuarios }}" value="{{ @user }}">
+								<tr>
+									<td>{{@user.idUsuario }} </td>
+									<td>{{@user.nombreUsuario}} </td>
+									<td>
+										<check if="{{@user.rolUsuario}}==0">
+											<true>
+												Vendedor
+											</true>
+											<false>
+												Administrador
+											</false>
+										</check>
+
+									</td>
+									<td> 
+
+										<div class="btn-group" role="group" aria-label="Basic example">
+											<check if="{{@user.idUsuario}}==1">
+												<false>
+													<button  class="btn btn-primary"  type="button" data-bs-toggle="offcanvas" data-bs-target="#updateUser{{@user.idUsuario}}" aria-controls="updateUserExample" ><i class="fas fa-user-edit"></i></button>
+											<button class="btn btn-danger"   type="button"  data-bs-toggle="modal" data-bs-target="#removeUser{{@user.idUsuario}}"><i class="fas fa-user-minus"></i></button>
+												</false>
+											</check>
+										</div>
+									</td>
+								</tr>
+							</repeat>
+						</tbody>
+						<tfoot>
+							<tr>
+								<th>id</th>
+								<th>Nombre de Usuario </th>
+								<th>Rol</th>
+								<th>Acciones</th>
+							</tr>
+						</tfoot>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
